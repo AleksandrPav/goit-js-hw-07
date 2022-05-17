@@ -1,18 +1,12 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 const refs = {
-    paletteContainer: document.querySelector(`.gallery`),
+    galleryContainer: document.querySelector(`.gallery`),
     cardsMarkup: createImagesMarkup(galleryItems),
-    link: document.querySelector(`.gallery__link`)
 }
-console.log(refs.link)
-// refs.link.addEventListener(`click`, removeLink) 
-// const removeLink = function (e) {
-//         e.preventDefault();
-//     };   
 
 
-refs.paletteContainer.insertAdjacentHTML(`beforeend`, refs.cardsMarkup);
+refs.paletteContainer.insertAdjacentHTML('afterbegin', refs.cardsMarkup);
 
 function createImagesMarkup(images) {
     
@@ -32,3 +26,16 @@ function createImagesMarkup(images) {
     
     
 }
+const galleryClick = (event) => {
+    event.preventDefault();
+
+    const currentImg = event.target.dataset.source;
+    const currentAlt = event.target.alt;
+}
+
+
+const instance = basicLightbox.create(`
+    <img src="${original}" width="800" height="600">
+`)
+
+instance.show()
