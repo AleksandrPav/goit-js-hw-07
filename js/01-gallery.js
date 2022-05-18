@@ -6,7 +6,7 @@ const refs = {
 }
 
 
-refs.paletteContainer.insertAdjacentHTML('afterbegin', refs.cardsMarkup);
+refs.galleryContainer.insertAdjacentHTML('afterbegin', refs.cardsMarkup);
 
 function createImagesMarkup(images) {
     
@@ -26,16 +26,21 @@ function createImagesMarkup(images) {
     
     
 }
-const galleryClick = (event) => {
-    event.preventDefault();
+let instance = basicLightbox.create(``);
 
-    const currentImg = event.target.dataset.source;
-    const currentAlt = event.target.alt;
+const galleryOpenModal = (event) => {
+    event.preventDefault();
+    instance = basicLightbox.create(`<img src="${event.target.dataset.source}"></img>`)
+    instance.show();
 }
 
+refs.galleryContainer.addEventListener("click", galleryOpenModal);
 
-const instance = basicLightbox.create(`
-    <img src="${original}" width="800" height="600">
-`)
+const galleryCloseModal = (event) => {
 
-instance.show()
+    if(event.code === `Escape`){
+        instance.close();}
+    
+}
+
+refs.galleryContainer.addEventListener("keydown", galleryCloseModal);
