@@ -51,7 +51,7 @@ function galleryCloseModal (event) {
 }
 
 refs.galleryContainer.addEventListener("click", galleryOpenModal);
-refs.galleryContainer.addEventListener("keydown", galleryCloseModal);
+
 
 
 
